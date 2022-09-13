@@ -49,7 +49,7 @@ def main(notebook_path: str, script_path: str, reformat_code: bool = False) -> N
                 continue
 
             # Functions are stored in the library
-            if ast_node_type == ast.FunctionDef:
+            if ast_node_type in [ast.FunctionDef, ast.ClassDef]:
                 library.append(ast_code + "\n\n")
                 continue
 
