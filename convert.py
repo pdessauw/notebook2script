@@ -16,7 +16,11 @@ def cell_parser(cell: dict) -> list[str]:
 
 def line_parser(line: str) -> str:
     """Fix lines of code for writing in document."""
-    if not line.endswith("\n"):
+    # Comment Jupyter notebook commands.
+    if line.startswith("!") or line.startswith("%"):
+        line = f"# {line}"
+
+    if not line.endswith("\n"):  # Add line return if missing.
         line += "\n"
     return line
 
